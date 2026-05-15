@@ -1,5 +1,5 @@
 {
-	"name": "ds_adls_bronze_unzip",
+	"name": "ds_adls_bronze_zip_filecollect",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_ADLS_sink_cricsheet",
@@ -10,8 +10,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "ipl/unzipped",
-				"fileSystem": "staging"
+				"fileName": "ipl_json.zip",
+				"folderPath": "downloads",
+				"fileSystem": "bronze-layer"
+			},
+			"compression": {
+				"type": "ZipDeflate"
 			}
 		}
 	}
