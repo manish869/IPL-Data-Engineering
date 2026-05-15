@@ -1,0 +1,18 @@
+{
+	"name": "ds_silver_delta_metadata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ADLS_sink_cricsheet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "all_matches_delta",
+				"fileSystem": "silver-layer"
+			}
+		}
+	}
+}
