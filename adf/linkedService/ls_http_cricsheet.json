@@ -1,0 +1,13 @@
+{
+	"name": "ls_http_cricsheet",
+	"properties": {
+		"description": "Data source to gather Indian Premier League data",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://cricsheet.org/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
