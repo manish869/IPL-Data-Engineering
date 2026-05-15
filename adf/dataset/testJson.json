@@ -1,0 +1,335 @@
+{
+	"name": "testJson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ADLS_sink_cricsheet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "1529300.json",
+				"fileSystem": "bronze-layer"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"meta": {
+					"type": "object",
+					"properties": {
+						"data_version": {
+							"type": "string"
+						},
+						"created": {
+							"type": "string"
+						},
+						"revision": {
+							"type": "integer"
+						}
+					}
+				},
+				"info": {
+					"type": "object",
+					"properties": {
+						"balls_per_over": {
+							"type": "integer"
+						},
+						"city": {
+							"type": "string"
+						},
+						"dates": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"event": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"match_number": {
+									"type": "integer"
+								}
+							}
+						},
+						"gender": {
+							"type": "string"
+						},
+						"match_type": {
+							"type": "string"
+						},
+						"officials": {
+							"type": "object",
+							"properties": {
+								"match_referees": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"reserve_umpires": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"tv_umpires": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"umpires": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"outcome": {
+							"type": "object",
+							"properties": {
+								"winner": {
+									"type": "string"
+								},
+								"by": {
+									"type": "object",
+									"properties": {
+										"wickets": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						},
+						"overs": {
+							"type": "integer"
+						},
+						"player_of_match": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"players": {
+							"type": "object",
+							"properties": {
+								"Kolkata Knight Riders": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Royal Challengers Bengaluru": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"registry": {
+							"type": "object",
+							"properties": {
+								"people": {
+									"type": "object",
+									"properties": {
+										"A Kripal Singh": {
+											"type": "string"
+										},
+										"A Raghuvanshi": {
+											"type": "string"
+										},
+										"AM Rahane": {
+											"type": "string"
+										},
+										"AS Roy": {
+											"type": "string"
+										},
+										"B Kumar": {
+											"type": "string"
+										},
+										"C Green": {
+											"type": "string"
+										},
+										"D Padikkal": {
+											"type": "string"
+										},
+										"FH Allen": {
+											"type": "string"
+										},
+										"JA Duffy": {
+											"type": "string"
+										},
+										"JG Bethell": {
+											"type": "string"
+										},
+										"JM Sharma": {
+											"type": "string"
+										},
+										"JR Hazlewood": {
+											"type": "string"
+										},
+										"KH Pandya": {
+											"type": "string"
+										},
+										"KM Gandhi": {
+											"type": "string"
+										},
+										"Kartik Tyagi": {
+											"type": "string"
+										},
+										"MK Pandey": {
+											"type": "string"
+										},
+										"Nitin Menon": {
+											"type": "string"
+										},
+										"R Pandit": {
+											"type": "string"
+										},
+										"R Powell": {
+											"type": "string"
+										},
+										"RK Singh": {
+											"type": "string"
+										},
+										"RM Patidar": {
+											"type": "string"
+										},
+										"Rasikh Salam": {
+											"type": "string"
+										},
+										"SP Narine": {
+											"type": "string"
+										},
+										"SR Dubey": {
+											"type": "string"
+										},
+										"TH David": {
+											"type": "string"
+										},
+										"TM Srivastava": {
+											"type": "string"
+										},
+										"V Kohli": {
+											"type": "string"
+										},
+										"VG Arora": {
+											"type": "string"
+										},
+										"VR Iyer": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						},
+						"season": {
+							"type": "string"
+						},
+						"team_type": {
+							"type": "string"
+						},
+						"teams": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"toss": {
+							"type": "object",
+							"properties": {
+								"decision": {
+									"type": "string"
+								},
+								"winner": {
+									"type": "string"
+								}
+							}
+						},
+						"venue": {
+							"type": "string"
+						}
+					}
+				},
+				"innings": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"team": {
+								"type": "string"
+							},
+							"overs": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"over": {
+											"type": "integer"
+										},
+										"deliveries": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"batter": {
+														"type": "string"
+													},
+													"bowler": {
+														"type": "string"
+													},
+													"non_striker": {
+														"type": "string"
+													},
+													"runs": {
+														"type": "object",
+														"properties": {
+															"batter": {
+																"type": "integer"
+															},
+															"extras": {
+																"type": "integer"
+															},
+															"total": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"powerplays": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"from": {
+											"type": "number"
+										},
+										"to": {
+											"type": "number"
+										},
+										"type": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

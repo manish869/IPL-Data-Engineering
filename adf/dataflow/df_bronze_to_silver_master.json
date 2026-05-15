@@ -1,0 +1,128 @@
+{
+	"name": "df_bronze_to_silver_master",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "testJson",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "AddMetadata"
+				},
+				{
+					"name": "flatten1"
+				},
+				{
+					"name": "InningsLevel"
+				},
+				{
+					"name": "flatten2"
+				},
+				{
+					"name": "flatten3"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     p_filename as string",
+				"}",
+				"source(output(",
+				"          meta as (data_version as string, created as string, revision as integer),",
+				"          info as (balls_per_over as integer, city as string, dates as string[], event as (name as string, match_number as integer), gender as string, match_type as string, officials as (match_referees as string[], reserve_umpires as string[], tv_umpires as string[], umpires as string[]), outcome as (winner as string, by as (wickets as integer)), overs as integer, player_of_match as string[], players as ({Kolkata Knight Riders} as string[], {Royal Challengers Bengaluru} as string[]), registry as (people as ({A Kripal Singh} as string, {A Raghuvanshi} as string, {AM Rahane} as string, {AS Roy} as string, {B Kumar} as string, {C Green} as string, {D Padikkal} as string, {FH Allen} as string, {JA Duffy} as string, {JG Bethell} as string, {JM Sharma} as string, {JR Hazlewood} as string, {KH Pandya} as string, {KM Gandhi} as string, {Kartik Tyagi} as string, {MK Pandey} as string, {Nitin Menon} as string, {R Pandit} as string, {R Powell} as string, {RK Singh} as string, {RM Patidar} as string, {Rasikh Salam} as string, {SP Narine} as string, {SR Dubey} as string, {TH David} as string, {TM Srivastava} as string, {V Kohli} as string, {VG Arora} as string, {VR Iyer} as string)), season as string, team_type as string, teams as string[], toss as (decision as string, winner as string), venue as string),",
+				"          innings as (team as string, overs as (over as integer, deliveries as (batter as string, bowler as string, non_striker as string, runs as (batter as integer, extras as integer, total as integer))[])[], powerplays as (from as double, to as double, type as string)[])[]",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'singleDocument',",
+				"     wildcardPaths:[($p_filename)]) ~> source1",
+				"source1 derive(match_id = replace($p_filename, '.json', ''),",
+				"          load_timestamp = currentTimestamp(),",
+				"          team_1 = info.teams[1],",
+				"          team_2 = info.teams[2],",
+				"          {umpire 1} = info.officials.umpires[1],",
+				"          umpire_2 = info.officials.umpires[1]) ~> AddMetadata",
+				"AddMetadata foldDown(unroll(),",
+				"     mapColumn(",
+				"          match_id,",
+				"          match_city = info.city,",
+				"          match_dates = info.dates,",
+				"          tournament_name = info.event.name,",
+				"          match_number = info.event.match_number,",
+				"          match_type = info.match_type,",
+				"          match_referees = info.officials.match_referees,",
+				"          match_reserve_umpires = info.officials.reserve_umpires,",
+				"          match_tv_umpires = info.officials.tv_umpires,",
+				"          match_umpires = info.officials.umpires,",
+				"          match_winner = info.outcome.winner,",
+				"          win_by_runs = info.outcome.by.runs,",
+				"          win_by_wickets = info.outcome.by.wickets,",
+				"          match_overs = info.overs,",
+				"          player_of_match = info.player_of_match,",
+				"          tournament_season = info.season,",
+				"          teams = info.teams,",
+				"          toss_winner = info.toss.winner,",
+				"          toss_decision = info.toss.decision,",
+				"          match_venue = info.venue",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"AddMetadata foldDown(unroll(innings),",
+				"     mapColumn(",
+				"          meta,",
+				"          info,",
+				"          innings,",
+				"          match_id,",
+				"          load_timestamp,",
+				"          team_1,",
+				"          team_2,",
+				"          {umpire 1},",
+				"          umpire_2",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> InningsLevel",
+				"InningsLevel foldDown(unroll(innings.overs),",
+				"     mapColumn(",
+				"          meta,",
+				"          info,",
+				"          innings,",
+				"          match_id,",
+				"          load_timestamp,",
+				"          team_1,",
+				"          team_2,",
+				"          {umpire 1},",
+				"          umpire_2",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten2",
+				"flatten2 foldDown(unroll(innings.overs.deliveries),",
+				"     mapColumn(",
+				"          meta,",
+				"          info,",
+				"          innings,",
+				"          match_id,",
+				"          load_timestamp,",
+				"          team_1,",
+				"          team_2,",
+				"          {umpire 1},",
+				"          umpire_2",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten3",
+				"flatten3 aggregate(groupBy({match_id-team} = [match_id, innings.team]),",
+				"     total_runs = sum(innings.overs.deliveries.runs.total)) ~> aggregate1"
+			]
+		}
+	}
+}
