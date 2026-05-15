@@ -1,0 +1,17 @@
+{
+	"name": "ds_adls_bronze_zip",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ADLS_sink_cricsheet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "bronze-layer"
+			}
+		}
+	}
+}
