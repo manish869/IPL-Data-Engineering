@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "ipl/unzipped",
 				"fileSystem": "staging"
 			}
 		}
