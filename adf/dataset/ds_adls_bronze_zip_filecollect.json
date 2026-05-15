@@ -13,6 +13,9 @@
 				"fileName": "ipl_json.zip",
 				"folderPath": "downloads",
 				"fileSystem": "bronze-layer"
+			},
+			"compression": {
+				"type": "ZipDeflate"
 			}
 		}
 	}

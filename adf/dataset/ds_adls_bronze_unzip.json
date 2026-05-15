@@ -12,9 +12,6 @@
 				"type": "AzureBlobFSLocation",
 				"folderPath": "ipl/unzipped",
 				"fileSystem": "staging"
-			},
-			"compression": {
-				"type": "ZipDeflate"
 			}
 		}
 	}
