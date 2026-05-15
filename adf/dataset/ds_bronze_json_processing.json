@@ -13,6 +13,661 @@
 				"fileSystem": "bronze-layer"
 			}
 		},
-		"schema": {}
+		"schema": {
+			"type": "object",
+			"properties": {
+				"meta": {
+					"type": "object",
+					"properties": {
+						"data_version": {
+							"type": "string"
+						},
+						"created": {
+							"type": "string"
+						},
+						"revision": {
+							"type": "integer"
+						}
+					}
+				},
+				"info": {
+					"type": "object",
+					"properties": {
+						"balls_per_over": {
+							"type": "integer"
+						},
+						"city": {
+							"type": "string"
+						},
+						"dates": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"event": {
+							"type": "object",
+							"properties": {
+								"match_number": {
+									"type": "integer"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"gender": {
+							"type": "string"
+						},
+						"match_type": {
+							"type": "string"
+						},
+						"officials": {
+							"type": "object",
+							"properties": {
+								"match_referees": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"reserve_umpires": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"tv_umpires": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"umpires": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"outcome": {
+							"type": "object",
+							"properties": {
+								"by": {
+									"type": "object",
+									"properties": {
+										"runs": {
+											"type": "integer"
+										},
+										"wickets": {
+											"type": "integer"
+										}
+									}
+								},
+								"winner": {
+									"type": "string"
+								}
+							}
+						},
+						"overs": {
+							"type": "integer"
+						},
+						"player_of_match": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"players": {
+							"type": "object",
+							"properties": {
+								"Royal Challengers Bangalore": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Sunrisers Hyderabad": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Mumbai Indians": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Rising Pune Supergiant": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Gujarat Lions": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Kolkata Knight Riders": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Kings XI Punjab": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"Delhi Daredevils": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"registry": {
+							"type": "object",
+							"properties": {
+								"people": {
+									"type": "object",
+									"properties": {
+										"A Choudhary": {
+											"type": "string"
+										},
+										"A Deshmukh": {
+											"type": "string"
+										},
+										"A Nehra": {
+											"type": "string"
+										},
+										"AY Dandekar": {
+											"type": "string"
+										},
+										"B Kumar": {
+											"type": "string"
+										},
+										"BCJ Cutting": {
+											"type": "string"
+										},
+										"Bipul Sharma": {
+											"type": "string"
+										},
+										"CH Gayle": {
+											"type": "string"
+										},
+										"CJ Jordan": {
+											"type": "string"
+										},
+										"DA Warner": {
+											"type": "string"
+										},
+										"DJ Hooda": {
+											"type": "string"
+										},
+										"J Srinath": {
+											"type": "string"
+										},
+										"KM Jadhav": {
+											"type": "string"
+										},
+										"MC Henriques": {
+											"type": "string"
+										},
+										"Mandeep Singh": {
+											"type": "string"
+										},
+										"N Pandit": {
+											"type": "string"
+										},
+										"NJ Llong": {
+											"type": "string"
+										},
+										"NV Ojha": {
+											"type": "string"
+										},
+										"Rashid Khan": {
+											"type": "string"
+										},
+										"S Aravind": {
+											"type": "string"
+										},
+										"S Dhawan": {
+											"type": "string"
+										},
+										"SR Watson": {
+											"type": "string"
+										},
+										"STR Binny": {
+											"type": "string"
+										},
+										"Sachin Baby": {
+											"type": "string"
+										},
+										"TM Head": {
+											"type": "string"
+										},
+										"TS Mills": {
+											"type": "string"
+										},
+										"YS Chahal": {
+											"type": "string"
+										},
+										"Yuvraj Singh": {
+											"type": "string"
+										},
+										"A Nand Kishore": {
+											"type": "string"
+										},
+										"A Zampa": {
+											"type": "string"
+										},
+										"AB Dinda": {
+											"type": "string"
+										},
+										"AM Rahane": {
+											"type": "string"
+										},
+										"AT Rayudu": {
+											"type": "string"
+										},
+										"BA Stokes": {
+											"type": "string"
+										},
+										"DL Chahar": {
+											"type": "string"
+										},
+										"HH Pandya": {
+											"type": "string"
+										},
+										"Imran Tahir": {
+											"type": "string"
+										},
+										"JC Buttler": {
+											"type": "string"
+										},
+										"JJ Bumrah": {
+											"type": "string"
+										},
+										"KA Pollard": {
+											"type": "string"
+										},
+										"KH Pandya": {
+											"type": "string"
+										},
+										"M Nayyar": {
+											"type": "string"
+										},
+										"MA Agarwal": {
+											"type": "string"
+										},
+										"MJ McClenaghan": {
+											"type": "string"
+										},
+										"MK Tiwary": {
+											"type": "string"
+										},
+										"MS Dhoni": {
+											"type": "string"
+										},
+										"N Rana": {
+											"type": "string"
+										},
+										"Navdeep Singh": {
+											"type": "string"
+										},
+										"PA Patel": {
+											"type": "string"
+										},
+										"R Bhatia": {
+											"type": "string"
+										},
+										"RG Sharma": {
+											"type": "string"
+										},
+										"S Ravi": {
+											"type": "string"
+										},
+										"SPD Smith": {
+											"type": "string"
+										},
+										"TG Southee": {
+											"type": "string"
+										},
+										"VK Sharma": {
+											"type": "string"
+										},
+										"AJ Finch": {
+											"type": "string"
+										},
+										"BB McCullum": {
+											"type": "string"
+										},
+										"CA Lynn": {
+											"type": "string"
+										},
+										"CK Nandan": {
+											"type": "string"
+										},
+										"CR Woakes": {
+											"type": "string"
+										},
+										"DR Smith": {
+											"type": "string"
+										},
+										"DS Kulkarni": {
+											"type": "string"
+										},
+										"G Gambhir": {
+											"type": "string"
+										},
+										"JJ Roy": {
+											"type": "string"
+										},
+										"K Srinivasan": {
+											"type": "string"
+										},
+										"KD Karthik": {
+											"type": "string"
+										},
+										"Kuldeep Yadav": {
+											"type": "string"
+										},
+										"MK Pandey": {
+											"type": "string"
+										},
+										"MS Gony": {
+											"type": "string"
+										},
+										"Nitin Menon": {
+											"type": "string"
+										},
+										"P Kumar": {
+											"type": "string"
+										},
+										"PP Chawla": {
+											"type": "string"
+										},
+										"RV Uthappa": {
+											"type": "string"
+										},
+										"S Kaushik": {
+											"type": "string"
+										},
+										"SA Yadav": {
+											"type": "string"
+										},
+										"SB Jakati": {
+											"type": "string"
+										},
+										"SK Raina": {
+											"type": "string"
+										},
+										"SP Narine": {
+											"type": "string"
+										},
+										"TA Boult": {
+											"type": "string"
+										},
+										"V Narayan Kutty": {
+											"type": "string"
+										},
+										"YC Barde": {
+											"type": "string"
+										},
+										"YK Pathan": {
+											"type": "string"
+										},
+										"AK Chaudhary": {
+											"type": "string"
+										},
+										"AR Patel": {
+											"type": "string"
+										},
+										"C Shamshuddin": {
+											"type": "string"
+										},
+										"Chinmay Sharma": {
+											"type": "string"
+										},
+										"DA Miller": {
+											"type": "string"
+										},
+										"DT Christian": {
+											"type": "string"
+										},
+										"GJ Maxwell": {
+											"type": "string"
+										},
+										"HM Amla": {
+											"type": "string"
+										},
+										"KN Ananthapadmanabhan": {
+											"type": "string"
+										},
+										"M Vohra": {
+											"type": "string"
+										},
+										"MM Sharma": {
+											"type": "string"
+										},
+										"MP Stoinis": {
+											"type": "string"
+										},
+										"R Pandit": {
+											"type": "string"
+										},
+										"RD Chahar": {
+											"type": "string"
+										},
+										"Sandeep Sharma": {
+											"type": "string"
+										},
+										"Swapnil Singh": {
+											"type": "string"
+										},
+										"T Natarajan": {
+											"type": "string"
+										},
+										"WP Saha": {
+											"type": "string"
+										},
+										"A Mishra": {
+											"type": "string"
+										},
+										"AP Tare": {
+											"type": "string"
+										},
+										"B Stanlake": {
+											"type": "string"
+										},
+										"CH Morris": {
+											"type": "string"
+										},
+										"CR Brathwaite": {
+											"type": "string"
+										},
+										"Iqbal Abdulla": {
+											"type": "string"
+										},
+										"KK Nair": {
+											"type": "string"
+										},
+										"P Negi": {
+											"type": "string"
+										},
+										"PJ Cummins": {
+											"type": "string"
+										},
+										"RR Pant": {
+											"type": "string"
+										},
+										"S Nadeem": {
+											"type": "string"
+										},
+										"SV Samson": {
+											"type": "string"
+										},
+										"SW Billings": {
+											"type": "string"
+										},
+										"Vishnu Vinod": {
+											"type": "string"
+										},
+										"Z Khan": {
+											"type": "string"
+										},
+										"Basil Thampi": {
+											"type": "string"
+										},
+										"Tejas Baroka": {
+											"type": "string"
+										},
+										"V Shankar": {
+											"type": "string"
+										},
+										"AS Rajpoot": {
+											"type": "string"
+										},
+										"Harbhajan Singh": {
+											"type": "string"
+										},
+										"R Dhawan": {
+											"type": "string"
+										},
+										"S Chaturvedi": {
+											"type": "string"
+										},
+										"SL Malinga": {
+											"type": "string"
+										},
+										"AB de Villiers": {
+											"type": "string"
+										},
+										"VR Aaron": {
+											"type": "string"
+										},
+										"CJ Anderson": {
+											"type": "string"
+										},
+										"F du Plessis": {
+											"type": "string"
+										},
+										"RA Tripathi": {
+											"type": "string"
+										},
+										"Mustafizur Rahman": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						},
+						"season": {
+							"type": "null"
+						},
+						"team_type": {
+							"type": "string"
+						},
+						"teams": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"toss": {
+							"type": "object",
+							"properties": {
+								"decision": {
+									"type": "string"
+								},
+								"winner": {
+									"type": "string"
+								}
+							}
+						},
+						"venue": {
+							"type": "string"
+						}
+					}
+				},
+				"innings": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"team": {
+								"type": "string"
+							},
+							"overs": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"over": {
+											"type": "integer"
+										},
+										"deliveries": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"batter": {
+														"type": "string"
+													},
+													"bowler": {
+														"type": "string"
+													},
+													"non_striker": {
+														"type": "string"
+													},
+													"runs": {
+														"type": "object",
+														"properties": {
+															"batter": {
+																"type": "integer"
+															},
+															"extras": {
+																"type": "integer"
+															},
+															"total": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"powerplays": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"from": {
+											"type": "number"
+										},
+										"to": {
+											"type": "number"
+										},
+										"type": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
