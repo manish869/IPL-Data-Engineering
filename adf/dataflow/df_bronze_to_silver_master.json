@@ -33,7 +33,7 @@
 					"name": "derivedColumn1"
 				},
 				{
-					"name": "join1"
+					"name": "flatten4"
 				}
 			],
 			"scriptLines": [
@@ -116,11 +116,17 @@
 				"          tournament_season = info.season,",
 				"          toss_winner = info.toss.winner,",
 				"          toss_decision = info.toss.decision) ~> derivedColumn1",
-				"derivedColumn1, aggregate1 join(AddMetadata@match_id == aggregate1@match_id,",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"flatten2 foldDown(unroll(overs.deliveries),",
+				"     mapColumn(",
+				"          meta,",
+				"          info,",
+				"          deliveries = overs.deliveries,",
+				"          match_id,",
+				"          load_timestamp,",
+				"          over = overs.over",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten4"
 			]
 		}
 	}
