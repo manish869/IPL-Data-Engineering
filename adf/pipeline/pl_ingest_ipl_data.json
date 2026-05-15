@@ -70,8 +70,7 @@
 						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"deleteFilesAfterCompletion": false
+							"recursive": true
 						},
 						"formatSettings": {
 							"type": "BinaryReadSettings"
@@ -80,14 +79,15 @@
 					"sink": {
 						"type": "BinarySink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
 						}
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_adls_bronze_zip",
+						"referenceName": "ds_adls_bronze_zip_filecollect",
 						"type": "DatasetReference"
 					}
 				],
