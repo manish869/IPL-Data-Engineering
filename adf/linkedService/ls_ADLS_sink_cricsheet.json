@@ -1,0 +1,10 @@
+{
+	"name": "ls_ADLS_sink_cricsheet",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://cricketdatastorage.dfs.core.windows.net/"
+		}
+	}
+}
