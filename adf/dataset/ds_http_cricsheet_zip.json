@@ -1,0 +1,17 @@
+{
+	"name": "ds_http_cricsheet_zip",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_http_cricsheet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "downloads/ipl_json.zip"
+			}
+		}
+	}
+}
