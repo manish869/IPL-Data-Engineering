@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://cricketdatastorage.dfs.core.windows.net/"
+			"url": "https://cricketdatastorage2.dfs.core.windows.net/"
 		}
 	}
 }
