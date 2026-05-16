@@ -1,0 +1,91 @@
+{
+	"name": "df_bronze_to_silver_master_copy1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "testJson",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "MatchDimensionDerivedColumns"
+				},
+				{
+					"name": "FinalMatchDimension"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          meta as (data_version as string, created as string, revision as integer),",
+				"          info as (balls_per_over as integer, city as string, dates as string[], event as (name as string, match_number as integer), gender as string, match_type as string, officials as (match_referees as string[], reserve_umpires as string[], tv_umpires as string[], umpires as string[]), outcome as (winner as string, by as (wickets as integer, runs as integer)), overs as integer, player_of_match as string[], players as ({Kolkata Knight Riders} as string[], {Royal Challengers Bengaluru} as string[]), registry as (people as ({A Kripal Singh} as string, {A Raghuvanshi} as string, {AM Rahane} as string, {AS Roy} as string, {B Kumar} as string, {C Green} as string, {D Padikkal} as string, {FH Allen} as string, {JA Duffy} as string, {JG Bethell} as string, {JM Sharma} as string, {JR Hazlewood} as string, {KH Pandya} as string, {KM Gandhi} as string, {Kartik Tyagi} as string, {MK Pandey} as string, {Nitin Menon} as string, {R Pandit} as string, {R Powell} as string, {RK Singh} as string, {RM Patidar} as string, {Rasikh Salam} as string, {SP Narine} as string, {SR Dubey} as string, {TH David} as string, {TM Srivastava} as string, {V Kohli} as string, {VG Arora} as string, {VR Iyer} as string)), season as string, team_type as string, teams as string[], toss as (decision as string, winner as string), venue as string),",
+				"          innings as (team as string, overs as (over as integer, deliveries as (batter as string, bowler as string, non_striker as string, runs as (batter as integer, extras as integer, total as integer), wickets as (player_out as string, filders as (name as string)[], kind as string)[])[])[], powerplays as (from as double, to as double, type as string)[])[]",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'singleDocument') ~> source1",
+				"source1 derive(match_id = info.event.match_number,",
+				"          load_timestamp = currentTimestamp(),",
+				"          team_1 = info.teams[1],",
+				"          team_2 = info.teams[2],",
+				"          {umpire 1} = info.officials.umpires[1],",
+				"          umpire_2 = info.officials.umpires[2],",
+				"          team = innings.team,",
+				"          match_date = info.dates[1],",
+				"          match_city = info.city,",
+				"          tournament_name = info.event.name,",
+				"          match_number = info.event.match_number,",
+				"          match_type = info.match_type,",
+				"          match_venue = info.venue,",
+				"          match_winner = info.outcome.winner,",
+				"          win_by_wickets = info.outcome.by.wickets,",
+				"          win_by_runs = info.outcome.by.runs,",
+				"          player_of_the_match = info.player_of_match,",
+				"          tournament_season = info.season,",
+				"          toss_winner = info.toss.winner,",
+				"          toss_decision = info.toss.decision) ~> MatchDimensionDerivedColumns",
+				"MatchDimensionDerivedColumns select(mapColumn(",
+				"          meta,",
+				"          load_timestamp,",
+				"          match_id,",
+				"          tournament_name,",
+				"          tournament_season,",
+				"          match_number,",
+				"          match_date,",
+				"          match_city,",
+				"          match_type,",
+				"          match_venue,",
+				"          team,",
+				"          team_1,",
+				"          team_2,",
+				"          toss_winner,",
+				"          toss_decision,",
+				"          {umpire 1},",
+				"          umpire_2,",
+				"          player_of_the_match,",
+				"          match_winner,",
+				"          win_by_wickets,",
+				"          win_by_runs",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> FinalMatchDimension",
+				"source1 select(mapColumn(",
+				"          info = info",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
+			]
+		}
+	}
+}
