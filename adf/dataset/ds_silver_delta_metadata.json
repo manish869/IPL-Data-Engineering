@@ -1,5 +1,5 @@
 {
-	"name": "ds_adls_bronze_unzip",
+	"name": "ds_silver_delta_metadata",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_ADLS_sink_cricsheet",
@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "bronze-layer"
+				"folderPath": "all_matches_delta",
+				"fileSystem": "silver-layer"
 			}
 		}
 	}
