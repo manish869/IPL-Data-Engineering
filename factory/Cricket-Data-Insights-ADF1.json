@@ -1,0 +1,15 @@
+{
+	"name": "Cricket-Data-Insights-ADF1",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a11df15c-7bf4-4d1a-a0fd-85382dcdc86c",
+		"tenantId": "1009a797-bce9-4685-b917-ebffbf4027a4"
+	}
+}
