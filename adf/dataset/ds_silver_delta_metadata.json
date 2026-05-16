@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "all_matches_delta",
 				"fileSystem": "silver-layer"
 			}
 		}
